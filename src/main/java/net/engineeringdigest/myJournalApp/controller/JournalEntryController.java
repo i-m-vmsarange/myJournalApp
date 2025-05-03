@@ -13,7 +13,7 @@ public class JournalEntryController {
 
     Map<Long, JournalEntry> journalEntries = new HashMap<>();
 
-    @GetMapping
+    @GetMapping("/getAll")
     public ArrayList<JournalEntry> getEntries(){
 
         return new ArrayList<JournalEntry>(journalEntries.values());
@@ -23,5 +23,16 @@ public class JournalEntryController {
 
         journalEntries.put(myEntry.getId(),myEntry);
         return true;
+    }
+    @PutMapping("id/{myid}")
+    public boolean updateEntry(@PathVariable Long myid,@RequestBody JournalEntry journalEntry){
+
+        journalEntries.put(myid,journalEntry);
+        return true;
+    }
+    @GetMapping("/getEntry/{id}")
+    public JournalEntry getEntryById(@PathVariable Long id){
+
+        return journalEntries.get(id);
     }
 }
