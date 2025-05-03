@@ -35,4 +35,9 @@ public class JournalEntryController {
 
         return journalEntries.get(id);
     }
+    @DeleteMapping("/{entryid}")
+    public JournalEntry deleteEntry(@PathVariable Long entryid){
+
+        return journalEntries.remove(entryid);
+    }
 }
